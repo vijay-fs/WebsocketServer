@@ -22,11 +22,11 @@ const upload = multer({ dest: "uploads/" });
 app.use(cors());
 
 io.on("connection", (socket) => {
-   console.log(`${getFormattedTimestamp()} - A user connected`);
+  console.log(`${getFormattedTimestamp()} - A user connected`);
 
 
   socket.on("disconnect", () => {
-       console.log(`${getFormattedTimestamp()} - User disconnected`);
+    console.log(`${getFormattedTimestamp()} - User disconnected`);
   });
 });
 
@@ -51,12 +51,11 @@ app.post("/upload", upload.single("file"), (req, res) => {
         filename: file.originalname,
         status: "uploaded",
       });
-        console.log(
-          `${getFormattedTimestamp()} - Upload completed for ${
-            file.originalname
-          }`
-        );
-     res.send({
+      console.log(
+        `${getFormattedTimestamp()} - Upload completed for ${file.originalname
+        }`
+      );
+      res.send({
         message: "File uploaded successfully",
         filename: file.originalname,
       });
@@ -64,6 +63,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
   }, 100); // Emit progress every 100ms
 });
 
-server.listen(3001, () => {
-  console.log("Server running on port 3001");
+server.listen(6008, () => {
+  console.log("Server running on port 6008");
 });
